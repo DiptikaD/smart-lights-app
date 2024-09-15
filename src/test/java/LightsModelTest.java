@@ -36,6 +36,7 @@ public class LightsModelTest {
         Color expected = Color.orange;
 
         Assert.assertEquals(expected, actual.getColour());
+
     }
 
 
