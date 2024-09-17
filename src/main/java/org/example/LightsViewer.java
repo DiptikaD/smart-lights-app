@@ -13,5 +13,25 @@ public class LightsViewer extends JPanel {
         setPreferredSize(new Dimension(800, 200));
     }
 
+    @Override
+    protected void paintComponent(Graphics g){
+        super.paintComponent(g);
+        Graphics2D g2g = (Graphics2D) g;
+
+        int x = 10;
+        int y = 50;
+
+        for (LightsModel light: lights){
+            g2g.setColor(light.getColour());
+
+            g2g.fillOval(x, y, 5,5);
+
+            AlphaComposite composite = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, light.getIntensity() / 100.0f);
+            g2g.setComposite(composite);
+
+            x += 10;
+        }
+    }
+
 
 }
