@@ -33,5 +33,9 @@ public class LightsViewer extends JPanel {
         }
     }
 
+    public void updateLights(List<LightsModel> newLights){
+        lights = newLights;
+        repaint();
+    }
 
 }
