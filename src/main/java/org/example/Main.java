@@ -11,7 +11,6 @@ public class Main {
             JFrame jframe = new JFrame("pretty lights");
             jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 //            jframe.setSize(100,40);
-
             List<LightsModel> lights = new ArrayList<>();
             lights.add(new LightsModel(Color.green, 100, true));
             lights.add(new LightsModel(Color.BLUE, 60, true));
