@@ -10,7 +10,7 @@ public class LightsViewer extends JPanel {
 
     public LightsViewer(List<LightsModel> inputLights){
         lights = inputLights;
-        setPreferredSize(new Dimension(800, 200));
+        setPreferredSize(new Dimension(100, 40));
     }
 
     @Override
@@ -19,7 +19,7 @@ public class LightsViewer extends JPanel {
         Graphics2D g2g = (Graphics2D) g;
 
         int x = 10;
-        int y = 50;
+        int y = 10;
 
         for (LightsModel light: lights){
             g2g.setColor(light.getColour());
