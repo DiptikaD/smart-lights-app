@@ -21,6 +21,9 @@ public class Main {
             LightsViewer lightsViewer = new LightsViewer(lights);
             jframe.add(lightsViewer, BorderLayout.CENTER);
 
+//            nullary lightsViewer
+//            jframe.add(new LightsViewer(), BorderLayout.CENTER);
+
             jframe.pack();
             jframe.setVisible(true);
         }) ;
