@@ -14,9 +14,9 @@ public class Main {
             List<LightsModel> lights = new ArrayList<>();
             lights.add(new LightsModel(Color.green, 100, true, 320));
             lights.add(new LightsModel(Color.BLUE, 60, true, 530));
-            lights.add(new LightsModel(Color.magenta, 100, false, 720));
+            lights.add(new LightsModel(Color.magenta, 100, true, 720));
             lights.add(new LightsModel());
-            lights.add(new LightsModel(Color.magenta, 15, true, 400));
+            lights.add(new LightsModel(Color.red, 15, true, 400));
 
             LightsViewer lightsViewer = new LightsViewer(lights);
             jframe.add(lightsViewer, BorderLayout.CENTER);

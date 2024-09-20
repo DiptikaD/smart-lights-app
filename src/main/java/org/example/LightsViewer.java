@@ -12,6 +12,7 @@ public class LightsViewer extends JPanel {
     public LightsViewer(List<LightsModel> inputLights){
         lights = inputLights;
         setPreferredSize(new Dimension(100, 40));
+        startBlinking();
     }
 
     public LightsViewer(){
@@ -23,6 +24,7 @@ public class LightsViewer extends JPanel {
         newLights.add(new LightsModel(Color.blue, 100, true, 620));
         lights = newLights;
         setPreferredSize(new Dimension(100, 40));
+        startBlinking();
     }
 
     @Override
@@ -48,6 +50,33 @@ public class LightsViewer extends JPanel {
     public void updateLights(List<LightsModel> newLights){
         lights = newLights;
         repaint();
+    }
+
+    public void startBlinking(){
+        new Thread(() -> {
+            while (true){
+                for (LightsModel light : lights){
+                    try{
+                        Thread.sleep(light.getTimer());
+                    } catch (InterruptedException e) {
+                        Thread.currentThread().interrupt();
+                    }
+
+                    light.setIntensity(0);
+                    System.out.println("blinking");
+
+                    SwingUtilities.invokeLater(this::repaint);
+
+                    try{
+                        Thread.sleep(light.getTimer());
+                    } catch (InterruptedException e){
+                        Thread.currentThread().interrupt();
+                    }
+
+                    light.setIntensity(100);
+                }
+            }
+        }).start();
     }
 
 }
