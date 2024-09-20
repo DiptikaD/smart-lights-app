@@ -2,6 +2,7 @@ package org.example;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class LightsViewer extends JPanel {
@@ -10,6 +11,17 @@ public class LightsViewer extends JPanel {
 
     public LightsViewer(List<LightsModel> inputLights){
         lights = inputLights;
+        setPreferredSize(new Dimension(100, 40));
+    }
+
+    public LightsViewer(){
+        List<LightsModel> newLights = new ArrayList<>();
+        newLights.add(new LightsModel(Color.red, 100, true));
+        newLights.add(new LightsModel(Color.orange, 100, true));
+        newLights.add(new LightsModel(Color.yellow, 100, true));
+        newLights.add(new LightsModel(Color.green, 100, true));
+        newLights.add(new LightsModel(Color.blue, 100, true));
+        lights = newLights;
         setPreferredSize(new Dimension(100, 40));
     }
 
