@@ -22,6 +22,7 @@ public class LightsModel {
         colour = inputColour;
         intensity = inputIntensity;
         shine = inputShine;
+        timer = inputTimer;
     }
 
     public Color getColour() {
