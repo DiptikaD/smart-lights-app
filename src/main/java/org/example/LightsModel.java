@@ -26,7 +26,7 @@ public class LightsModel {
     }
 
     public Color getColour() {
-        return shine ? colour : colour.darker();
+        return shine ? colour : colour.darker().darker();
     }
 
     public void setColour(Color colour) {
@@ -43,7 +43,7 @@ public class LightsModel {
 //            return shine;
 //        }
 
-        return shine ? intensity : 0;
+        return intensity;
     }
 
     public void setIntensity(int intensity) {

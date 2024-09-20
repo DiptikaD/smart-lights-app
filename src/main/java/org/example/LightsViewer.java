@@ -62,9 +62,7 @@ public class LightsViewer extends JPanel {
                         Thread.currentThread().interrupt();
                     }
 
-                    light.setIntensity(0);
-                    System.out.println("blinking");
-
+                    light.setShine(!light.isShine());
                     SwingUtilities.invokeLater(this::repaint);
 
                     try{
@@ -73,7 +71,7 @@ public class LightsViewer extends JPanel {
                         Thread.currentThread().interrupt();
                     }
 
-                    light.setIntensity(100);
+//                    light.setIntensity(100);
                 }
             }
         }).start();
