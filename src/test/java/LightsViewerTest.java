@@ -19,11 +19,11 @@ public class LightsViewerTest {
     public void updateLightsTest(){
         LightsViewer tobeReplaced = new LightsViewer();
         List<LightsModel> lights = new ArrayList<>();
-        lights.add(new LightsModel(Color.green, 100, true));
-        lights.add(new LightsModel(Color.BLUE, 60, true));
-        lights.add(new LightsModel(Color.magenta, 100, false));
+        lights.add(new LightsModel(Color.green, 100, true, 600));
+        lights.add(new LightsModel(Color.BLUE, 60, true, 290));
+        lights.add(new LightsModel(Color.magenta, 100, false, 630));
         lights.add(new LightsModel());
-        lights.add(new LightsModel(Color.magenta, 15, true));
+        lights.add(new LightsModel(Color.magenta, 15, true, 810));
         tobeReplaced.updateLights(lights);
 
         Assert.assertNotEquals(tobeReplaced, new LightsViewer());
