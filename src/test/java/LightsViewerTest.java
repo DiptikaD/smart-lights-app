@@ -51,4 +51,5 @@ public class LightsViewerTest {
 
         Assert.assertNotEquals(tobeReplaced, new LightsViewer());
     }
+
 }
