@@ -16,6 +16,29 @@ public class LightsViewerTest {
     }
 
     @Test
+    public void lightViewerConstructor(){
+        List<LightsModel> lights = new ArrayList<>();
+        lights.add(new LightsModel(Color.pink, 100, true, 320));
+        lights.add(new LightsModel(Color.cyan, 60, true, 530));
+        LightsViewer lightview = new LightsViewer(lights);
+
+        int actual = lightview.getLengthOfLights();
+        int expected = 2;
+
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void lightsViewerNullConstructor(){
+        LightsViewer lightview = new LightsViewer();
+
+        int actual = lightview.getLengthOfLights();
+        int expected = 5;
+
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
     public void updateLightsTest(){
         LightsViewer tobeReplaced = new LightsViewer();
         List<LightsModel> lights = new ArrayList<>();

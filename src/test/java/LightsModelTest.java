@@ -59,7 +59,7 @@ public class LightsModelTest {
     }
 
     @Test
-    public void setTimer(){
+    public void setTimerTest(){
         LightsModel newLights = new LightsModel();
         int actual = newLights.randTimer();
         int expected = 500;
@@ -67,6 +67,17 @@ public class LightsModelTest {
 
         Assert.assertTrue(expected != actual);
         Assert.assertEquals(expected, newLights.getTimer());
+
+    }
+
+    @Test
+    public void getTimerTest(){
+        LightsModel newLights = new LightsModel(Color.red, 50, true, 100);
+        int expected = 400;
+        newLights.setTimer(expected);
+        int actual = newLights.getTimer();
+
+        Assert.assertEquals(expected, actual);
 
     }
 
@@ -85,6 +96,26 @@ public class LightsModelTest {
         LightsModel newLights = new LightsModel();
         int expected = 20;
         newLights.setIntensity(expected);
+        int actual = newLights.getIntensity();
+
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void isShineTest(){
+        LightsModel newLights = new LightsModel(Color.orange, 20, false, 500);
+
+        boolean expected = false;
+        boolean actual = newLights.isShine();
+
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void getIntensityTest(){
+        int expected = 20;
+        LightsModel newLights = new LightsModel(Color.orange, expected, false, 500);
+
         int actual = newLights.getIntensity();
 
         Assert.assertEquals(expected, actual);

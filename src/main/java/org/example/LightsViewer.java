@@ -77,4 +77,8 @@ public class LightsViewer extends JPanel {
         }).start();
     }
 
+    public int getLengthOfLights(){
+        return lights.size();
+    }
+
 }
