@@ -7,7 +7,6 @@ public class LightsModel {
 
     private Color colour;
     private int intensity;
-//    private Timer timer;
     private int timer;
     private boolean shine;
 
@@ -34,15 +33,6 @@ public class LightsModel {
     }
 
     public int getIntensity() {
-//        Color setColor;
-//        if (shine == false){
-//            setColour(Color.black);
-//            return shine;
-//        } else {
-//            setColour(setColor);
-//            return shine;
-//        }
-
         return intensity;
     }
 
