@@ -10,7 +10,6 @@ public class Main {
         SwingUtilities.invokeLater(() -> {
             JFrame jframe = new JFrame("pretty lights");
             jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//            jframe.setSize(100,40);
             List<LightsModel> lights = new ArrayList<>();
             lights.add(new LightsModel(Color.pink, 100, true, 320));
             lights.add(new LightsModel(Color.cyan, 60, true, 530));
@@ -20,10 +19,6 @@ public class Main {
 
             LightsViewer lightsViewer = new LightsViewer(lights);
             jframe.add(lightsViewer, BorderLayout.CENTER);
-
-//            nullary lightsViewer
-//            jframe.add(new LightsViewer(), BorderLayout.CENTER);
-
             jframe.pack();
             jframe.setVisible(true);
         }) ;

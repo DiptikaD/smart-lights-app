@@ -70,8 +70,6 @@ public class LightsViewer extends JPanel {
                     } catch (InterruptedException e){
                         Thread.currentThread().interrupt();
                     }
-
-//                    light.setIntensity(100);
                 }
             }
         }).start();
@@ -80,5 +78,4 @@ public class LightsViewer extends JPanel {
     public int getLengthOfLights(){
         return lights.size();
     }
-
 }
