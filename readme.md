@@ -7,7 +7,9 @@ An application which allows users to interact with a string of blinking coloured
 - Lights blink at an interval
 - Each light has its own values regarding intensity, colour and timer. 
 
-![](./media/lights.mov)
+
+https://github.com/user-attachments/assets/4323edb9-a58f-4c98-ba67-01c97616fc25
+
 
 **To be implemented**
 - Users will be able to add and remove a light
