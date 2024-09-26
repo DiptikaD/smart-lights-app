@@ -96,6 +96,20 @@ public class LightsViewer extends JPanel {
         JComboBox<Color> colorSelector = new JComboBox<>(new Color[]{Color.red, Color.orange, Color.pink, Color.green, Color.blue});
         controlPanel.add(colorSelector);
 
+        //intensity slider
+        JSlider intensitySlide = new JSlider(0, 100, 100);
+        intensitySlide.setMajorTickSpacing(10);
+        intensitySlide.setPaintTicks(true);
+        controlPanel.add(new JLabel("Intensity: "));
+        controlPanel.add(intensitySlide);
+
+        //timer slider
+        JSlider timeSlider = new JSlider(100, 1000, 750);
+        timeSlider.setMajorTickSpacing(10);
+        timeSlider.setPaintTicks(true);
+        controlPanel.add(new JLabel("Blinking: "));
+        controlPanel.add(timeSlider);
+
         JButton apply = new JButton("Apply changes");
         controlPanel.add(apply);
 
@@ -104,6 +118,8 @@ public class LightsViewer extends JPanel {
             LightsModel selectedLight = lightsViewer.lights.get(selectedIndex);
 
             colorSelector.setSelectedItem(selectedLight.getColour());
+            intensitySlide.setValue(selectedLight.getIntensity());
+            timeSlider.setValue(selectedLight.getTimer());
         });
 
         apply.addActionListener(new ActionListener() {
@@ -111,10 +127,14 @@ public class LightsViewer extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 int selectIndex = lightSelector.getSelectedIndex();
                 Color selectedColor = (Color) colorSelector.getSelectedItem();
+                int selectedIntensity = intensitySlide.getValue();
+                int selectedTimer = timeSlider.getValue();
 
                 if (selectIndex >=0){
                     LightsModel light = lightsViewer.lights.get(selectIndex);
                     light.setColour(selectedColor);
+                    light.setIntensity(selectedIntensity);
+                    light.setTimer(selectedTimer);
                     lightsViewer.repaint();
                 }
             }
