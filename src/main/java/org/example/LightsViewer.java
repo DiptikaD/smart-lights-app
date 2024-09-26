@@ -40,12 +40,12 @@ public class LightsViewer extends JPanel {
         for (LightsModel light: lights){
             g2g.setColor(light.getColour());
 
-            g2g.fillOval(x, y, 5,5);
+            g2g.fillOval(x, y, 50,50);
 
             AlphaComposite composite = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, light.getIntensity() / 100.0f);
             g2g.setComposite(composite);
 
-            x += 10;
+            x += 100;
         }
     }
 
@@ -100,17 +100,22 @@ public class LightsViewer extends JPanel {
 
     private static JPanel createControlPanel(LightsViewer lightsViewer){
         JPanel controlPanel = new JPanel();
+        controlPanel.setLayout(new GridLayout(0,2));
 
         //select light
         JComboBox<String> lightSelector = new JComboBox<>();
         for (int i = 0; i < lightsViewer.getLengthOfLights(); i++){
-            lightSelector.addItem("Light " + (i+1));
+            lightSelector.addItem("Light " + (i + 1));
         }
-        controlPanel.add(new JLabel("Select Light"));
+        controlPanel.add(new JLabel("Select Light: "));
         controlPanel.add(lightSelector);
 
         //select colour
-        JComboBox<Color> colorSelector = new JComboBox<>(new Color[]{Color.red, Color.orange, Color.pink, Color.green, Color.blue});
+        String[] colourNames = {"Red", "Orange", "Pink", "Green", "Blue", "White"};
+        Color[] colours = {Color.red, Color.orange, Color.pink, Color.green, Color.blue, Color.white};
+
+        JComboBox<String> colorSelector = new JComboBox<>(colourNames);
+        controlPanel.add(new JLabel("Colour: "));
         controlPanel.add(colorSelector);
 
         //intensity slider
@@ -122,7 +127,7 @@ public class LightsViewer extends JPanel {
 
         //timer slider
         JSlider timeSlider = new JSlider(100, 1000, 750);
-        timeSlider.setMajorTickSpacing(10);
+        timeSlider.setMajorTickSpacing(100);
         timeSlider.setPaintTicks(true);
         controlPanel.add(new JLabel("Blinking: "));
         controlPanel.add(timeSlider);
@@ -134,7 +139,7 @@ public class LightsViewer extends JPanel {
             int selectedIndex = lightSelector.getSelectedIndex();
             LightsModel selectedLight = lightsViewer.lights.get(selectedIndex);
 
-            colorSelector.setSelectedItem(selectedLight.getColour());
+            colorSelector.setSelectedItem(getColourName(selectedLight.getColour(), colours, colourNames));
             intensitySlide.setValue(selectedLight.getIntensity());
             timeSlider.setValue(selectedLight.getTimer());
         });
@@ -143,7 +148,7 @@ public class LightsViewer extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int selectIndex = lightSelector.getSelectedIndex();
-                Color selectedColor = (Color) colorSelector.getSelectedItem();
+                Color selectedColor = colours[colorSelector.getSelectedIndex()];
                 int selectedIntensity = intensitySlide.getValue();
                 int selectedTimer = timeSlider.getValue();
 
@@ -157,5 +162,14 @@ public class LightsViewer extends JPanel {
             }
         });
         return controlPanel;
+    }
+
+    private static String getColourName(Color colour, Color[] colours, String[] colourNames){
+        for (int i = 0; i<colours.length; i++){
+            if (colours[i].equals(colour)){
+                return colourNames[i];
+            }
+        }
+        return "";
     }
 }
