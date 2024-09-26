@@ -81,6 +81,23 @@ public class LightsViewer extends JPanel {
         return lights.size();
     }
 
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(LightsViewer::createAndShowGUI);
+    }
+
+    private static void createAndShowGUI (){
+        JFrame frame = new JFrame("pretty lights");
+        LightsViewer lightsViewer = new LightsViewer();
+        JPanel controlPanel = createControlPanel(lightsViewer);
+
+        frame.setLayout(new BorderLayout());
+        frame.add(lightsViewer, BorderLayout.CENTER);
+        frame.add(controlPanel, BorderLayout.SOUTH);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.pack();
+        frame.setVisible(true);
+    }
+
     private static JPanel createControlPanel(LightsViewer lightsViewer){
         JPanel controlPanel = new JPanel();
 
