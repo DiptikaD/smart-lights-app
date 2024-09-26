@@ -2,6 +2,8 @@ package org.example;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -77,5 +79,46 @@ public class LightsViewer extends JPanel {
 
     public int getLengthOfLights(){
         return lights.size();
+    }
+
+    private static JPanel createControlPanel(LightsViewer lightsViewer){
+        JPanel controlPanel = new JPanel();
+
+        //select light
+        JComboBox<String> lightSelector = new JComboBox<>();
+        for (int i = 0; i < lightsViewer.getLengthOfLights(); i++){
+            lightSelector.addItem("Light " + (i+1));
+        }
+        controlPanel.add(new JLabel("Select Light"));
+        controlPanel.add(lightSelector);
+
+        //select colour
+        JComboBox<Color> colorSelector = new JComboBox<>(new Color[]{Color.red, Color.orange, Color.pink, Color.green, Color.blue});
+        controlPanel.add(colorSelector);
+
+        JButton apply = new JButton("Apply changes");
+        controlPanel.add(apply);
+
+        lightSelector.addActionListener(e -> {
+            int selectedIndex = lightSelector.getSelectedIndex();
+            LightsModel selectedLight = lightsViewer.lights.get(selectedIndex);
+
+            colorSelector.setSelectedItem(selectedLight.getColour());
+        });
+
+        apply.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int selectIndex = lightSelector.getSelectedIndex();
+                Color selectedColor = (Color) colorSelector.getSelectedItem();
+
+                if (selectIndex >=0){
+                    LightsModel light = lightsViewer.lights.get(selectIndex);
+                    light.setColour(selectedColor);
+                    lightsViewer.repaint();
+                }
+            }
+        });
+        return controlPanel;
     }
 }
