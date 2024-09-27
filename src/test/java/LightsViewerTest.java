@@ -51,4 +51,17 @@ public class LightsViewerTest {
 
         Assert.assertNotEquals(tobeReplaced, new LightsViewer());
     }
+
+    @Test
+    public void startBlinkingTest() throws InterruptedException{
+        Thread.sleep(2000);
+    }
+
+    @Test
+    public void createAndShowGUITest(){
+        LightsViewer lightsViewer = new LightsViewer();
+        boolean actual = lightsViewer.isVisible();
+        boolean expected = true;
+        Assert.assertEquals(expected, actual);
+    }
 }

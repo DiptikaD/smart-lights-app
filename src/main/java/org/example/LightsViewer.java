@@ -13,7 +13,7 @@ public class LightsViewer extends JPanel {
 
     public LightsViewer(List<LightsModel> inputLights){
         lights = inputLights;
-        setPreferredSize(new Dimension(100, 40));
+        setPreferredSize(new Dimension(100, 100));
         startBlinking();
     }
 
@@ -30,7 +30,7 @@ public class LightsViewer extends JPanel {
     }
 
     @Override
-    protected void paintComponent(Graphics g){
+    public void paintComponent(Graphics g){
         super.paintComponent(g);
         Graphics2D g2g = (Graphics2D) g;
 
