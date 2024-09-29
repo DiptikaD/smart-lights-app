@@ -110,6 +110,11 @@ public class LightsViewer extends JPanel {
         controlPanel.add(new JLabel("Select Light: "));
         controlPanel.add(lightSelector);
 
+        //turn off all lights
+        JButton turnOff = new JButton();
+        controlPanel.add(new JLabel("Turn off Lights!"));
+        controlPanel.add(turnOff);
+
         //select colour
         String[] colourNames = {"Red", "Orange", "Pink", "Green", "Blue", "White"};
         Color[] colours = {Color.red, Color.orange, Color.pink, Color.green, Color.blue, Color.white};
@@ -160,6 +165,13 @@ public class LightsViewer extends JPanel {
                     lightsViewer.repaint();
                 }
             }
+        });
+
+        turnOff.addActionListener(e -> {
+            for (LightsModel light : lightsViewer.lights){
+                light.setShine(false);
+            }
+            lightsViewer.repaint();
         });
         return controlPanel;
     }
