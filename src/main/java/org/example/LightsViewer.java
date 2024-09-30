@@ -24,6 +24,9 @@ public class LightsViewer extends JPanel {
         newLights.add(new LightsModel(Color.yellow, 100, true, 700));
         newLights.add(new LightsModel(Color.green, 100, true, 540));
         newLights.add(new LightsModel(Color.blue, 100, true, 620));
+        newLights.add(new LightsModel(Color.CYAN, 100, true, 540));
+        newLights.add(new LightsModel(Color.white, 100, true, 620));
+
         lights = newLights;
         setPreferredSize(new Dimension(100, 40));
         startBlinking();
