@@ -19,13 +19,13 @@ public class LightsViewer extends JPanel {
 
     public LightsViewer(){
         List<LightsModel> newLights = new ArrayList<>();
-        newLights.add(new LightsModel(Color.red, 100, true, 750));
-        newLights.add(new LightsModel(Color.orange, 100, true, 300));
-        newLights.add(new LightsModel(Color.yellow, 100, true, 700));
-        newLights.add(new LightsModel(Color.green, 100, true, 540));
-        newLights.add(new LightsModel(Color.blue, 100, true, 620));
-        newLights.add(new LightsModel(Color.CYAN, 100, true, 540));
-        newLights.add(new LightsModel(Color.white, 100, true, 620));
+        newLights.add(new LightsModel(Color.red, 100, true, 750, 50));
+        newLights.add(new LightsModel(Color.orange, 100, true, 300, 50));
+        newLights.add(new LightsModel(Color.yellow, 100, true, 700, 50));
+        newLights.add(new LightsModel(Color.green, 100, true, 540, 50));
+        newLights.add(new LightsModel(Color.blue, 100, true, 620, 50));
+        newLights.add(new LightsModel(Color.CYAN, 100, true, 540, 50));
+        newLights.add(new LightsModel(Color.white, 100, true, 620, 50));
 
         lights = newLights;
         setPreferredSize(new Dimension(100, 40));
@@ -42,13 +42,14 @@ public class LightsViewer extends JPanel {
 
         for (LightsModel light: lights){
             g2g.setColor(light.getColour());
+            int currentSize = light.getSize();
 
-            g2g.fillOval(x, y, 50,50);
+            g2g.fillOval(x, y, currentSize, currentSize);
 
             AlphaComposite composite = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, light.getIntensity() / 100.0f);
             g2g.setComposite(composite);
 
-            x += 100;
+            x += currentSize + 20;
         }
     }
 
@@ -132,6 +133,9 @@ public class LightsViewer extends JPanel {
         intensitySlide.setPaintTicks(true);
         controlPanel.add(new JLabel("Intensity: "));
         controlPanel.add(intensitySlide);
+
+        //size adjuster
+        //
 
         //timer slider
         JSlider timeSlider = new JSlider(100, 1000, 750);
