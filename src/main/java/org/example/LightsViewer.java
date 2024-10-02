@@ -135,7 +135,10 @@ public class LightsViewer extends JPanel {
         controlPanel.add(intensitySlide);
 
         //size adjuster
-        //
+        JButton increaseSize = new JButton("Bigger!");
+        JButton decreaseSize = new JButton("Smaller!");
+        controlPanel.add(increaseSize);
+        controlPanel.add(decreaseSize);
 
         //timer slider
         JSlider timeSlider = new JSlider(100, 1000, 750);
@@ -146,6 +149,24 @@ public class LightsViewer extends JPanel {
 
         JButton apply = new JButton("Apply changes");
         controlPanel.add(apply);
+
+        increaseSize.addActionListener(e -> {
+            int selectIndex = lightSelector.getSelectedIndex();
+            if (selectIndex >= 0){
+                LightsModel light = lightsViewer.lights.get(selectIndex);
+                light.setSize(light.getSize()+5);
+                lightsViewer.repaint();
+            }
+        });
+
+        decreaseSize.addActionListener(e -> {
+            int selectIndex = lightSelector.getSelectedIndex();
+            if (selectIndex >=0){
+                LightsModel light = lightsViewer.lights.get(selectIndex);
+                light.setSize(light.getSize()-5);
+                lightsViewer.repaint();
+            }
+        });
 
         lightSelector.addActionListener(e -> {
             int selectedIndex = lightSelector.getSelectedIndex();
