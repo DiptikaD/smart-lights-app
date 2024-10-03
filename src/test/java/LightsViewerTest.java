@@ -18,8 +18,8 @@ public class LightsViewerTest {
     @Test
     public void lightViewerConstructor(){
         List<LightsModel> lights = new ArrayList<>();
-        lights.add(new LightsModel(Color.pink, 100, true, 320));
-        lights.add(new LightsModel(Color.cyan, 60, true, 530));
+        lights.add(new LightsModel(Color.pink, 100, true, 320, 50));
+        lights.add(new LightsModel(Color.cyan, 60, true, 530, 50));
         LightsViewer lightview = new LightsViewer(lights);
 
         int actual = lightview.getLengthOfLights();
@@ -42,11 +42,11 @@ public class LightsViewerTest {
     public void updateLightsTest(){
         LightsViewer tobeReplaced = new LightsViewer();
         List<LightsModel> lights = new ArrayList<>();
-        lights.add(new LightsModel(Color.green, 100, true, 600));
-        lights.add(new LightsModel(Color.BLUE, 60, true, 290));
-        lights.add(new LightsModel(Color.magenta, 100, false, 630));
+        lights.add(new LightsModel(Color.green, 100, true, 600, 50));
+        lights.add(new LightsModel(Color.BLUE, 60, true, 290, 50));
+        lights.add(new LightsModel(Color.magenta, 100, false, 630, 50));
         lights.add(new LightsModel());
-        lights.add(new LightsModel(Color.magenta, 15, true, 810));
+        lights.add(new LightsModel(Color.magenta, 15, true, 810, 50));
         tobeReplaced.updateLights(lights);
 
         Assert.assertNotEquals(tobeReplaced, new LightsViewer());

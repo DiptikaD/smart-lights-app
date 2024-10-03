@@ -8,7 +8,7 @@ public class LightsModelTest {
 
     @Test
     public void setColour(){
-        LightsModel actual = new LightsModel(Color.red, 100, true, 600);
+        LightsModel actual = new LightsModel(Color.red, 100, true, 600, 50);
         Color expected = Color.red;
 
         Assert.assertEquals(expected, actual.getColour());
@@ -16,7 +16,7 @@ public class LightsModelTest {
 
     @Test
     public void setIntensity(){
-        LightsModel actual = new LightsModel(Color.red, 55, true, 600);
+        LightsModel actual = new LightsModel(Color.red, 55, true, 600, 50);
         int expected = 55;
 
         Assert.assertEquals(expected, actual.getIntensity());
@@ -24,7 +24,7 @@ public class LightsModelTest {
 
     @Test
     public void setShine(){
-        LightsModel actual = new LightsModel(Color.red, 55, false, 600);
+        LightsModel actual = new LightsModel(Color.red, 55, false, 600, 50);
         boolean expected = false;
 
         Assert.assertEquals(expected, actual.isShine());
@@ -72,7 +72,7 @@ public class LightsModelTest {
 
     @Test
     public void getTimerTest(){
-        LightsModel newLights = new LightsModel(Color.red, 50, true, 100);
+        LightsModel newLights = new LightsModel(Color.red, 50, true, 100, 50);
         int expected = 400;
         newLights.setTimer(expected);
         int actual = newLights.getTimer();
@@ -103,7 +103,7 @@ public class LightsModelTest {
 
     @Test
     public void isShineTest(){
-        LightsModel newLights = new LightsModel(Color.orange, 20, false, 500);
+        LightsModel newLights = new LightsModel(Color.orange, 20, false, 500, 50);
 
         boolean expected = false;
         boolean actual = newLights.isShine();
@@ -114,11 +114,32 @@ public class LightsModelTest {
     @Test
     public void getIntensityTest(){
         int expected = 20;
-        LightsModel newLights = new LightsModel(Color.orange, expected, false, 500);
+        LightsModel newLights = new LightsModel(Color.orange, expected, false, 500, 50);
 
         int actual = newLights.getIntensity();
 
         Assert.assertEquals(expected, actual);
     }
+
+    @Test
+    public void setSizeTest(){
+        int expected = 65;
+        LightsModel newLights = new LightsModel();
+        newLights.setSize(expected);
+        int actual = newLights.getSize();
+
+        Assert.assertEquals(expected,actual);
+    }
+
+    @Test
+    public void getSizeTest(){
+        int expected = 85;
+        LightsModel newLights = new LightsModel(Color.magenta, 20, true, 500, expected);
+
+        int actual = newLights.getSize();
+
+        Assert.assertEquals(expected, actual);
+    }
+
 
 }
