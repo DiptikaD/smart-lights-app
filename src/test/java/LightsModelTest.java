@@ -121,4 +121,25 @@ public class LightsModelTest {
         Assert.assertEquals(expected, actual);
     }
 
+    @Test
+    public void setSizeTest(){
+        int expected = 65;
+        LightsModel newLights = new LightsModel();
+        newLights.setSize(expected);
+        int actual = newLights.getSize();
+
+        Assert.assertEquals(expected,actual);
+    }
+
+    @Test
+    public void getSizeTest(){
+        int expected = 85;
+        LightsModel newLights = new LightsModel(Color.magenta, 20, true, 500, expected);
+
+        int actual = newLights.getSize();
+
+        Assert.assertEquals(expected, actual);
+    }
+
+
 }
