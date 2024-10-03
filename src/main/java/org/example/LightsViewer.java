@@ -154,7 +154,7 @@ public class LightsViewer extends JPanel {
             int selectIndex = lightSelector.getSelectedIndex();
             if (selectIndex >= 0){
                 LightsModel light = lightsViewer.lights.get(selectIndex);
-                light.setSize(light.getSize()+5);
+                light.increaseSize();
                 lightsViewer.repaint();
             }
         });
@@ -163,7 +163,7 @@ public class LightsViewer extends JPanel {
             int selectIndex = lightSelector.getSelectedIndex();
             if (selectIndex >=0){
                 LightsModel light = lightsViewer.lights.get(selectIndex);
-                light.setSize(light.getSize()-5);
+                light.decreaseSize();
                 lightsViewer.repaint();
             }
         });

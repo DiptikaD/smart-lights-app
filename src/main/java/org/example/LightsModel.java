@@ -74,10 +74,10 @@ public class LightsModel {
     }
 
     public void increaseSize(){
-        size++;
+        size+= 5;
     }
 
     public void decreaseSize(){
-        size--;
+        size-= 5;
     }
 }
