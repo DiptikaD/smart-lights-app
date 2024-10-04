@@ -141,5 +141,24 @@ public class LightsModelTest {
         Assert.assertEquals(expected, actual);
     }
 
+    @Test
+    public void increaseSizeTest(){
+        int expected = 55;
+        LightsModel newlights = new LightsModel();
+        newlights.increaseSize();
+        int actual = newlights.getSize();
+
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void decreaseSizeTest(){
+        int expected = 45;
+        LightsModel newLights = new LightsModel();
+        newLights.decreaseSize();
+        int actual = newLights.getSize();
+
+        Assert.assertEquals(expected, actual);
+    }
 
 }
